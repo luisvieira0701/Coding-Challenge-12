@@ -39,7 +39,7 @@ clearCanvasButton.addEventListener('click', () => {
     const tools = document.querySelectorAll('input[name="tool"]');
     tools.forEach((toolButton)=> {
         toolButton.addEventListener('change', (event) =>{
-            tools=event.target.value
+            tool = event.target.value
         })
     })
 
@@ -50,7 +50,7 @@ clearCanvasButton.addEventListener('click', () => {
             ctx.beginPath()
 
         if (tool === 'rectangle') {
-            ctx.rect(startX,startY,event.offsetX,event.offsetY);
+            ctx.rect(startX,startY,event.offsetX - startX,event.offsetY - startY);
             ctx.stroke()
         } else if (tool ==='pencil') {
             ctx.moveTo(startX,startY)
