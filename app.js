@@ -45,19 +45,18 @@ clearCanvasButton.addEventListener('click', () => {
 
     canvas.addEventListener('mousemove',(event)=> {
         if (drawing){
-            ctx.clearRect(0,0,canvas.width,canvas.height)
             ctx.strokeStyle = color
-            ctx.beginPath()
+            ctx.lineWidth = 2
 
         if (tool === 'rectangle') {
+            ctx.clearRect(0,0,canvas.width,canvas.height)
+            ctx.beginPath()
             ctx.rect(startX,startY,event.offsetX - startX,event.offsetY - startY);
             ctx.stroke()
-        } else if (tool ==='pencil') {
-            ctx.moveTo(startX,startY)
+        } else if (tool ==='pencil') {    
             ctx.lineTo(event.offsetX,event.offsetY)
             ctx.stroke()
-            startX=event.offsetX
-            startY=event.offsetY
+            ctx.moveTo(event.offsetX,event.offsetY)
         }
             }
         }
